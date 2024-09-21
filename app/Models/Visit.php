@@ -19,6 +19,8 @@ class Visit extends Model
         'created_at',
     ];
 
+    public $timestamps = false;
+
     public function domain(): BelongsTo
     {
         return $this->belongsTo(Domain::class);

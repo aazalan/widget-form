@@ -13,6 +13,8 @@ class User extends Model
         'password',
     ];
 
+    public $timestamps = false;
+
     public function domains(): HasMany
     {
         return $this->hasMany(Domain::class);

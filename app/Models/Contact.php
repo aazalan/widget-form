@@ -13,6 +13,8 @@ class Contact extends Model
         'created_at',
     ];
 
+    public $timestamps = false;
+
     public function visit(): BelongsTo
     {
         return $this->belongsTo(Visit::class);
