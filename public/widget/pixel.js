@@ -1,4 +1,7 @@
 (function() {
+    // адрес сервиса на котором будет находиться сервис хранящий информацию о посещениях сайтов и оставленных контактов
+    const serviceURL = 'http://localhost';
+
     const setCookie = (name, value, days) => {
         let expires = '';
         if (days) {
@@ -59,12 +62,28 @@
 
         });
     };
-    //
-    // let isFirstTime = checkCookie('isFirstTime');
-    //
-    // if (!isFirstTime) {
-    //     setCookie('firstVisitFlag', 'yes', 7);
-    // }
 
-    addWidgetFormToWebsite();
+    const  isCurrentDomainExists = async () =>  {
+        const currentDomain = window.location.host;
+        try {
+            const response = await fetch(serviceURL + '/domains');
+            const { data } = await response.json();
+            const domains = await data.map(d => d.domain);
+            return domains.includes(currentDomain);
+        } catch (error) {
+            console.log('Не удалось получить список доменов');
+            return false;
+        }
+    }
+
+    (async () => {
+        const  isDomainExistsInList = await isCurrentDomainExists();
+        // let isFirstTime = checkCookie('isFirstTime');
+
+        if (isDomainExistsInList) {
+            //     setCookie('firstVisitFlag', 'yes', 7);
+            addWidgetFormToWebsite();
+        }
+    })();
+
 })();
