@@ -1,0 +1,21 @@
+.widget-form__container {
+    background: #869fba;
+    position: fixed;
+    bottom: 10px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.widget-form__input {
+    height: 25px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.widget-form__button {
+    height: 25px;
+    margin: 5px;
+    border-radius: 5px;
+}
