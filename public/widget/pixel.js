@@ -112,7 +112,7 @@
 
     (async () => {
         const  isDomainExistsInList = await isCurrentDomainExists();
-        let isFirstTime = checkCookie('first_time_visit-');
+        let isFirstTime = checkCookie('first_time_visit');
 
         if (isDomainExistsInList && !isFirstTime) {
             setCookie('first_time_visit', 'yes', 7);
